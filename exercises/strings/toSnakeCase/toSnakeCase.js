@@ -14,14 +14,26 @@
  */
 
 function toSnakeCase(string) {
-  // This is your job. :)
+  let snakeCase = string.toLowerCase();
+  let characters = snakeCase.split("");
+
+  for(let i = 0; i<string.length;i++)
+  {
+    if(snakeCase[i] === " ")
+      {
+        characters.splice(i,1,"_");
+      }
+  }
+  let snake = characters.join("");
+  return snake;
 }
 
 if (require.main === module) {
   console.log('Running sanity checks for toSnakeCase:');
+  console.log(toSnakeCase("UsE tAbS nOt sPaCeS") === "use_tabs_not_spaces");
+  console.log(toSnakeCase("HAHAHAHA noice") === "hahahaha_noice");
+  console.log(toSnakeCase("     ") === "_____");
 
-  // Add your own sanity checks here.
-  // How else will you be sure your code does what you think it does?
 }
 
 module.exports = toSnakeCase;
