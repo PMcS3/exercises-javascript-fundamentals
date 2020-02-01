@@ -16,14 +16,39 @@
  *  array, or -1 if it's not found.
  */
 function firstIndexOf(haystack, needle) {
-  // This is your job. :)
+  let needleIndex;
+  for(i=0;i<haystack.length;i++)
+  {
+    if (haystack[i] === needle)
+    {
+      needleIndex = i;
+      return needleIndex;
+    }
+  }
 }
+
+/*function check(output, expected)
+{
+  if (output.length != expected.length){
+    return false;
+  }
+  
+  for (let i = 0; i < output.length; i++){
+    if (output[i] != expected[i]){
+      return false;
+    }
+  }
+
+  return true;
+}*/
 
 if (require.main === module) {
-  console.log('Running sanity checks for firstIndexOf:');
-
-  // Add your own sanity checks here.
-  // How else will you be sure your code does what you think it does?
+  console.log('Running sanity checks for countGreaterThan:');
+  console.log(firstIndexOf(([1,2,3,3,3,4,2],2) === 1));
+  console.log(firstIndexOf([2,2,8,4],4) === 3);
+  console.log(firstIndexOf([100,101,99,98,200], 99) === 2);
+  console.log(firstIndexOf([3,3,3,3],4) === undefined);
+  console.log(firstIndexOf([3,3,3,3],4));
+  console.log(firstIndexOf([3,3,3,3],3) === 0);
 }
-
 module.exports = firstIndexOf;
