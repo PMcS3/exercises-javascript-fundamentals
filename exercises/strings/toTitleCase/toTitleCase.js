@@ -17,14 +17,33 @@
  */
 
 function toTitleCase(string) {
-  // This is your job. :)
+  let lowerString = string.toLowerCase();
+  let letters = lowerString.split("");
+
+  for (i=0;i<letters.length;i++)
+  {
+    if(i === 0)
+    {
+      letters[i] = letters[i].toUpperCase();
+    }
+    else if(letters[i] === " ")
+      {
+        letters[i+1] = letters[i+1].toUpperCase();
+      }
+  }
+  let titleCase = letters.join("");
+  return titleCase;
 }
 
 if (require.main === module) {
   console.log('Running sanity checks for toTitleCase:');
-
-  // Add your own sanity checks here.
-  // How else will you be sure your code does what you think it does?
+  console.log(toTitleCase("i wAnT diNner") === "I Want Dinner");
+  console.log(toTitleCase("I wAnT diNner") === "I Want Dinner");
+  console.log(toTitleCase("i") === "I");
+  console.log(toTitleCase("deeeeep Web") === "Deeeeep Web");
+  console.log(toTitleCase("deeeeep web") === "Deeeeep Web");
+  console.log(toTitleCase("I LOVE LIZZO") === "I Love Lizzo");
+  
 }
 
 module.exports = toTitleCase;
