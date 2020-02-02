@@ -19,14 +19,31 @@
  * @returns {number} The median of the numbers in the array
  */
 function median(array) {
-  // This is your job. :)
+  let sides = array.sort();
+
+  while(sides.length > 2)
+  {
+    sides = sides.slice(1,-1);
+  }
+  //console.log(sides);
+  if(sides.length === 2)
+    {
+      let medianEven = (sides[0]+sides[1])/sides.length;
+      return medianEven + " since " + sides[0] + "," + sides[1] + " are the middle elements";
+    }
+  else
+    {
+      return sides[0] + " since " + sides[0] + " is the middle element";
+    }
+  
 }
 
 if (require.main === module) {
   console.log('Running sanity checks for median:');
-
-  // Add your own sanity checks here.
-  // How else will you be sure your code does what you think it does?
+  console.log(median([900, 10, 20]) === "20 since 20 is the middle element");
+  console.log(median([-10, 20, 400, 10]) === "15 since 10,20 are the middle elements");
+  console.log(median([-10, 20, 400, 10]) === "15 since 10,20 are the middle elements");
+  
 }
 
 module.exports = median;
