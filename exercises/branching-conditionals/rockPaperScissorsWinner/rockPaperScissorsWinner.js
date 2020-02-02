@@ -25,14 +25,26 @@
  *  whether the first player won, lost, or drew the match.
  */
 function rockPaperScissorsWinner(array) {
-  // This is your job. :)
+  if(array[0] < array[1])
+  {
+    return 'win';
+  }
+  else if (array[0] === array[1])
+  {
+    return 'draw';
+  }
+  else
+  {
+    return 'lose';
+  }
 }
 
 if (require.main === module) {
   console.log('Running sanity checks for rockPaperScissorsWinner:');
-
-  // Add your own sanity checks here.
-  // How else will you be sure your code does what you think it does?
+  console.log(rockPaperScissorsWinner([0, 1]) === 'win');
+  console.log(rockPaperScissorsWinner([2, 1]) === 'lose');
+  console.log(rockPaperScissorsWinner([1, 2]) === 'win');
+  console.log(rockPaperScissorsWinner([1, 1]) === 'draw');
 }
 
 module.exports = rockPaperScissorsWinner;
