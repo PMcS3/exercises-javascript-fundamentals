@@ -14,14 +14,39 @@
  * @returns {number[]} A new array consisting of all the odd numbers in the input array
  */
 function selectOdds(array) {
-  // This is your job. :)
-}
-
-if (require.main === module) {
-  console.log('Running sanity checks for selectOdds:');
-
-  // Add your own sanity checks here.
-  // How else will you be sure your code does what you think it does?
-}
-
+  for (i=0;i<=array.length;i++)
+  {
+    if(array[i]%2 === 0)
+    {
+      array.splice(i,1);
+    }
+  }
+  return array;
+ }
+ 
+ 
+ function check(output, expected)
+ {
+ 
+   if (output.length != expected.length){
+     return false;
+   }
+   
+   for (let q = 0; q < output.length; q++){
+     if (output[q] != expected[q]){
+       return false;
+     }
+   }
+ 
+   return true;
+ }
+ 
+ if (require.main === module) {
+   console.log('Running sanity checks for selectEvens:');
+   console.log(check(selectOdds([3,3,2,4,6,7,13]),[3,3,7,13]));
+   console.log(selectOdds([3,3,2,4,6,7,13]));
+   console.log(check(selectOdds([3,2,3,7,13]),[3,3,7,13]));
+   console.log(check(selectOdds([1,2,2,4,6,]),[1]));
+ 
+ }
 module.exports = selectOdds;
