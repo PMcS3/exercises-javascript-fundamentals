@@ -14,14 +14,39 @@
  * @returns {number[]} A new array consisting of all the even numbers in the input array
  */
 function selectEvens(array) {
-  // This is your job. :)
+ for (i=0;i<array.length;i++)
+ {
+   if(array[i]%2 != 0)
+   {
+     array.splice(i,1);
+   }
+ }
+ return array;
+}
+
+
+function check(output, expected)
+{
+
+  if (output.length != expected.length){
+    return false;
+  }
+  
+  for (let q = 0; q < output.length; q++){
+    if (output[q] != expected[q]){
+      return false;
+    }
+  }
+
+  return true;
 }
 
 if (require.main === module) {
   console.log('Running sanity checks for selectEvens:');
+  console.log(check(selectEvens([3,3,2,4,6,7,13]),[2,4,6]));
+  console.log(check(selectEvens([3,2,3,7,13]),[2]));
+  console.log(check(selectEvens([2,2,4,6,],[2,2,4,6])));
 
-  // Add your own sanity checks here.
-  // How else will you be sure your code does what you think it does?
 }
 
 module.exports = selectEvens;

@@ -21,15 +21,54 @@
  * @param {object[]} rightArray - The right array to concatenate
  * @returns {object[]} The concatenation of the two given arrays
  */
+
+ let dimes = [10,10];
+ let nickels = [5,5];
+ let dimeNickel = ['10','10','5','5'];
+
 function concat(leftArray, rightArray) {
-  // This is your job. :)
+  let left = leftArray.join(",");
+  let right = rightArray.join(",");
+  let together = "";
+  together = left + "," + right;
+  console.log(together);
+  let concat = together.split(",");
+  console.log(concat);
+  return concat;
 }
 
-if (require.main === module) {
-  console.log('Running sanity checks for concat:');
+function check(output, expected)
+{
+  if (output.length !== expected.length){
+    return false;
+  }
+  
+  for (let i = 0; i < output.length; i++){
+    if (output[i] !== expected[i]){
+      return false;
+    }
+  }
 
-  // Add your own sanity checks here.
-  // How else will you be sure your code does what you think it does?
+  return true;
+}
+
+
+/*function compare(leftArray, rightArray, correctArray)
+{
+  let match = false;
+  let correct = correctArray;
+
+  if(check(leftArray, rightArray) === correct)
+  {
+    match = true;
+  }
+  return match;
+}*/
+
+
+if (require.main === module) {
+  console.log(check(concat(['1','2'],['2','1']),['1','2','2','1']));
+  console.log(check(concat(['2','2','3'],['2','1']),['2','2','3','2','1']));
 }
 
 module.exports = concat;

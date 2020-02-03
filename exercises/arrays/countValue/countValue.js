@@ -15,14 +15,38 @@
  * @returns {number} The number of times the value appears in the array
  */
 function countValue(array, value) {
-  // This is your job. :)
+  for(i=0;i<array.length;i++)
+  {
+    if(array[i] != value)
+    {
+      array.splice(i,1)
+    }
+  }
+  return array.length;
+}
+
+function check(output, expected)
+{
+  if (output.length !== expected.length){
+    return false;
+  }
+  
+  for (let i = 0; i < output.length; i++){
+    if (output[i] !== expected[i]){
+      return false;
+    }
+  }
+
+  return true;
 }
 
 if (require.main === module) {
-  console.log('Running sanity checks for countValue:');
-
-  // Add your own sanity checks here.
-  // How else will you be sure your code does what you think it does?
+  console.log('Running sanity checks for countGreaterThan:');
+  console.log(check(countValue([1,2,3,3,3,4],3),3));
+  console.log(check(countValue([2,2,8,4],2),2));
+  console.log(check(countValue([100,101,99,98,200], 100),1));
+  console.log(check(countValue([3,3,3,3],3),4));
+  console.log(check(countValue([3,3,3,3],7),0));
 }
 
 module.exports = countValue;
